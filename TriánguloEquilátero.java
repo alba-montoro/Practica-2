@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class TrianguloEquilatero {
     // Atributo: longitud de un lado del triángulo
     private double lado;
@@ -40,13 +42,20 @@ public class TrianguloEquilatero {
                 lado, calcularArea(), calcularPerimetro());
     }
 
-    // Método principal de ejemplo
+    // Método principal
     public static void main(String[] args) {
-        TrianguloEquilatero t = new TrianguloEquilatero(5);
-        System.out.println(t);
+        Scanner sc = new Scanner(System.in);
 
-        // Cambiar el lado
-        t.setLado(7);
-        System.out.println(t);
+        System.out.print("Introduce el valor del lado del triángulo equilátero: ");
+        double lado = sc.nextDouble();
+
+        try {
+            TrianguloEquilatero t = new TrianguloEquilatero(lado);
+            System.out.println(t);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        sc.close();
     }
 }
